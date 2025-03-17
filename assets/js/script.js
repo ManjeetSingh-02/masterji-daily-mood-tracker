@@ -22,7 +22,7 @@ openTimelineContainer.addEventListener("click", () => toggle(timelineDiv, true))
 closeTimelineContainer.addEventListener("click", () => toggle(timelineDiv, false));
 
 // mouseleave event listener to reset the name of emoji in container when not hovering on it
-emojiDiv.addEventListener("mouseleave", () => (emojiName.textContent = "None"));
+emojiDiv.addEventListener("mouseleave", () => (emojiName.style.display = "none"));
 
 // array to store the emojis
 const emojiTimelineArr = [];
@@ -96,7 +96,7 @@ function updateTimeline(timeLineObj) {
 // function to fetch all emojis
 function loadEmojis() {
   // fetch emojis from json file
-  fetch("../assets/emojis.json")
+  fetch("https://raw.githubusercontent.com/ManjeetSingh-02/masterji-daily-mood-tracker/refs/heads/main/assets/emojis.json")
     .then((res) => res.json())
     .then((emojiArr) => {
       // traverse through array for each emoji
@@ -109,7 +109,10 @@ function loadEmojis() {
         emojiContainer.appendChild(btn);
 
         // mouseover event listener to display emoji name when hovering it
-        btn.addEventListener("mouseover", () => (emojiName.textContent = emoji.description));
+        btn.addEventListener("mouseover", () => {
+          emojiName.style.display = "block";
+          emojiName.textContent = emoji.description;
+        });
 
         // click event listener to save in localstorage
         btn.addEventListener("click", () => {
