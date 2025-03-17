@@ -96,7 +96,7 @@ function updateTimeline(timeLineObj) {
 // function to fetch all emojis
 function loadEmojis() {
   // fetch emojis from json file
-  fetch("https://raw.githubusercontent.com/ManjeetSingh-02/masterji-daily-mood-tracker/refs/heads/main/assets/emojis.json")
+  fetch("https://raw.githubusercontent.com/ManjeetSingh-02/masterji-daily-mood-tracker/refs/heads/main/assets/js/emojis.json")
     .then((res) => res.json())
     .then((emojiArr) => {
       // traverse through array for each emoji
