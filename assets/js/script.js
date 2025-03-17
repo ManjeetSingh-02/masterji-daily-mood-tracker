@@ -38,8 +38,24 @@ function toggle(name, value) {
   }
 }
 
-// function to get current time and date
-function getTimeDate() {
+// function to get current time
+function getTime() {
+  // create date object
+  const date = new Date();
+
+  // get current time
+  const currTime = date.toLocaleTimeString(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  // return time
+  return currTime;
+}
+
+// function to get current date
+function getDate() {
   // create date object
   const date = new Date();
 
@@ -83,11 +99,16 @@ function updateTimeline(timeLineObj) {
 
   // create date element and add text inside it
   const dateSpan = document.createElement("span");
-  dateSpan.textContent = timeLineObj.createdAt;
+  dateSpan.textContent = timeLineObj.creationDate;
+
+  // create time element and add text inside it
+  const timeSpan = document.createElement("span");
+  timeSpan.textContent = timeLineObj.creationTime;
 
   // append the elements in main element
   div.appendChild(emojiSpan);
   div.appendChild(dateSpan);
+  div.appendChild(timeSpan);
 
   // append the main element in timeline container
   timelineContainer.appendChild(div);
@@ -119,7 +140,8 @@ function loadEmojis() {
           // create new obj with emoji data
           const obj = {
             icon: emoji.emoji,
-            createdAt: getTimeDate(),
+            creationTime: getTime(),
+            creationDate: getDate(),
           };
 
           // push the data to array
