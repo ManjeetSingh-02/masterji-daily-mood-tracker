@@ -22,7 +22,7 @@ openTimelineContainer.addEventListener("click", () => toggle(timelineDiv, true))
 closeTimelineContainer.addEventListener("click", () => toggle(timelineDiv, false));
 
 // mouseleave event listener to reset the name of emoji in container when not hovering on it
-emojiDiv.addEventListener("mouseleave", () => (emojiName.style.display = "none"));
+emojiContainer.addEventListener("mouseleave", () => (emojiName.style.display = "none"));
 
 // array to store the emojis
 const emojiTimelineArr = [];
